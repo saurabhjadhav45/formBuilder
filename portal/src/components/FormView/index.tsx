@@ -30,6 +30,34 @@ export const FormView = ({
     const formUrl = `/form/${id}`;
     const name = type === "form" ? "Form" : "Resource";
 
+    const [formData, setFormData] = useState(null);
+
+    const handleExportForm = async () => {
+        const filename = `${formDisplayData?.name || id}-form.json`;
+        try {
+            const response = await fetch(
+                `/form/${id}`
+            );
+            if (!response.ok) {
+                throw new Error(`Error fetching form: ${response.statusText}`);
+            }
+            const form = await response.json();
+            const blob = new Blob([JSON.stringify(form, null, 2)], {
+                type: "application/json",
+            });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        } catch (error) {
+            console.error("Error downloading the form JSON:", error);
+        }
+    };
+
     useEffect(() => {
         const fetchFormDisplayData = async () => {
             const response = await fetch(`${formUrl}?select=title,name`);
@@ -61,6 +89,15 @@ export const FormView = ({
                     <div className="panel-title icon">
                         <img src={`icon-${type}.svg`} alt="" />{" "}
                         {formDisplayData?.title || formDisplayData?.name}
+
+                        <button
+                            className="button export-form-json small"
+                            onClick={handleExportForm}
+                            title="Export form definition as JSON"
+                            style={{ marginLeft: "10px", padding: "2px 4px" }}
+                        >
+                            Export JSON
+                        </button>
                     </div>
                     <button
                         type="button"
