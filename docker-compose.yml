@@ -22,7 +22,7 @@ services:
       ROOT_PASSWORD: CHANGEME
       NODE_CONFIG: |
         {
-          "mongo": "mongodb://mongo-ce:27017/formio-ce",
+          "mongo": "mongodb+srv://amuluser:amulpass123@cluster0.cop88n0.mongodb.net/formio-ce?retryWrites=true&w=majority&appName=Cluster0",
           "port": 3001,
           "jwt": {
             "secret": "CHANGEME"
