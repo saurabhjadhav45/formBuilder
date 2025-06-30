@@ -8,6 +8,7 @@ import { useInfoPanelContext } from "../hooks/useInfoPanelContext";
 import { FormList } from "./FormList";
 import { FormView } from "./FormView";
 import { NewForm } from "./NewForm";
+import NewFormJSON from "./NewFormJSON";
 import { HomePanel } from "./InfoPanel/HomePanel";
 import { EditPanel } from "./InfoPanel/EditPanel";
 import { AccessPanel } from "./InfoPanel/AccessPanel";
@@ -36,6 +37,12 @@ const App = () => {
                         <Route path="/newform">
                             <div className="panels">
                                 <NewForm type="form" />
+                                <CreatePanel type="form" />
+                            </div>
+                        </Route>
+                        <Route path="/newformjson">
+                            <div className="panels">
+                                <NewFormJSON />
                                 <CreatePanel type="form" />
                             </div>
                         </Route>

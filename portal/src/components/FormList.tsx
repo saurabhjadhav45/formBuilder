@@ -98,6 +98,14 @@ const FormListHeader = ({ type }: { type: "form" | "resource" }) => {
             >
                 + New {name}
             </button>
+            {isForm && (
+                <button
+                    onClick={() => setLocation('/newformjson')}
+                    className="button small new-form primary"
+                >
+                    + New Form with JSON
+                </button>
+            )}
 
         </div>
         <div className="panel-header-section bottom">
