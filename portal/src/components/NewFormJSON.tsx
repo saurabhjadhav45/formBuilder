@@ -71,76 +71,83 @@ export const NewFormJSON = () => {
                     </button>
                 </div>
             </div>
-            <div className="panel new-item" style={{ padding: "15px" }}>
-                <div className="mb-2">
-                    <input
-                        type="text"
-                        placeholder="Form Title"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        style={{ width: "100%" }}
-                    />
+            <div className="panel new-item">
+                <div className="edit-form-header">
+                    <div className="edit-form-header-left">
+                        <div className="formio-component form-group lateral">
+                            <label htmlFor="title">Form Title</label>
+                            <input
+                                id="title"
+                                type="text"
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                            />
+                        </div>
+                        <div className="formio-component form-group lateral">
+                            <label htmlFor="name">Form Name</label>
+                            <input
+                                id="name"
+                                type="text"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                            />
+                        </div>
+                        <div className="formio-component form-group lateral">
+                            <label htmlFor="path">Path</label>
+                            <input
+                                id="path"
+                                type="text"
+                                value={path}
+                                onChange={(e) => setPath(e.target.value)}
+                            />
+                        </div>
+                        <div className="formio-component form-group lateral">
+                            <label htmlFor="display">Display As</label>
+                            <select
+                                id="display"
+                                value={display}
+                                onChange={(e) => setDisplay(e.target.value)}
+                            >
+                                <option value="form">Form</option>
+                                <option value="wizard">Wizard</option>
+                            </select>
+                        </div>
+                        <div className="formio-component form-group lateral">
+                            <label htmlFor="tags">Tags</label>
+                            <input
+                                id="tags"
+                                type="text"
+                                value={tags}
+                                onChange={(e) => setTags(e.target.value)}
+                            />
+                        </div>
+                    </div>
                 </div>
-                <div className="mb-2">
-                    <input
-                        type="text"
-                        placeholder="Form Name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        style={{ width: "100%" }}
-                    />
-                </div>
-                <div className="mb-2">
-                    <input
-                        type="text"
-                        placeholder="Path"
-                        value={path}
-                        onChange={(e) => setPath(e.target.value)}
-                        style={{ width: "100%" }}
-                    />
-                </div>
-                <div className="mb-2">
-                    <select
-                        value={display}
-                        onChange={(e) => setDisplay(e.target.value)}
-                        style={{ width: "100%" }}
-                    >
-                        <option value="form">Form</option>
-                        <option value="wizard">Wizard</option>
-                    </select>
-                </div>
-                <div className="mb-2">
-                    <input
-                        type="text"
-                        placeholder="Tags (comma-separated)"
-                        value={tags}
-                        onChange={(e) => setTags(e.target.value)}
-                        style={{ width: "100%" }}
-                    />
-                </div>
-                <div className="mb-2">
-                    <small>
-                        Paste a Form.io form JSON including a components array.
-                    </small>
-                </div>
-                <div className="mb-2">
-                    <textarea
-                        placeholder="Paste form JSON here..."
-                        value={jsonText}
-                        onChange={(e) => setJsonText(e.target.value)}
-                        style={{ width: "100%", height: "200px" }}
-                    />
-                </div>
-                <div className="mb-2">
-                    <input
-                        type="file"
-                        accept="application/json"
-                        onChange={handleFile}
-                    />
-                </div>
-                {error && <div className="error" role="alert">{error}</div>}
-                <div className="save-form-bar button-wrap" style={{ justifyContent: "end" }}>
-                    <button className="button save-form" onClick={handleSubmit}>Create Form</button>
+                <div style={{ padding: "15px" }}>
+                    <div className="mb-2">
+                        <small>
+                            Paste a Form.io form JSON including a components array.
+                        </small>
+                    </div>
+                    <div className="mb-2">
+                        <textarea
+                            placeholder="Paste form JSON here..."
+                            value={jsonText}
+                            onChange={(e) => setJsonText(e.target.value)}
+                            style={{ width: "100%", height: "200px" }}
+                        />
+                    </div>
+                    <div className="mb-2">
+                        <input
+                            type="file"
+                            accept="application/json"
+                            onChange={handleFile}
+                        />
+                    </div>
+                    {error && <div className="error" role="alert">{error}</div>}
+                    <div className="save-form-bar button-wrap" style={{ justifyContent: "end" }}>
+                        <button className="button save-form" onClick={handleSubmit}>Create Form</button>
+                    </div>
                 </div>
             </div>
         </div>
