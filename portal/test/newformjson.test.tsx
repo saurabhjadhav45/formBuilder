@@ -36,8 +36,8 @@ test('Clicking on + New Form with JSON shows metadata fields', async () => {
   const newJsonButton = await screen.findByText('+ New Form with JSON');
   await userEvent.click(newJsonButton);
   expect(await screen.findByText('Create Form via JSON'));
-  expect(await screen.findByPlaceholderText('Form Title'));
-  expect(await screen.findByPlaceholderText('Form Name (unique)'));
+  expect(await screen.findByText('Form Title'));
+  expect(await screen.findByText('Form Name'));
 });
 
 test('Creating a form with JSON navigates to edit form', async () => {
@@ -82,9 +82,9 @@ test('Creating a form with JSON navigates to edit form', async () => {
     })
   );
   await userEvent.click(await screen.findByText('+ New Form with JSON'));
-  await userEvent.type(await screen.findByPlaceholderText('Form Title'), 'test');
-  await userEvent.type(await screen.findByPlaceholderText('Form Name (unique)'), 'test');
-  await userEvent.type(await screen.findByPlaceholderText('Path (e.g., myForm)'), 'test');
+  await userEvent.type(document.querySelector('[name="data[title]"]')!, 'test');
+  await userEvent.type(document.querySelector('[name="data[name]"]')!, 'test');
+  await userEvent.type(document.querySelector('[name="data[path]"]')!, 'test');
   await userEvent.type(await screen.findByPlaceholderText('Paste form JSON here...'), '{"components":[]}');
   fireEvent.click(await screen.findByText('Create Form'));
   const editFormTab = await screen.findByText('Edit Form');
